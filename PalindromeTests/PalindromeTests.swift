@@ -14,9 +14,8 @@ struct PalindromePrinter {
         case 0: return "False"
         case 1: return "True"
         default:
-            let midN = s.count % 2 == 0 ? (s.count / 2) : (s.count / 2) + 1
-            let mIndex = s.index(s.startIndex, offsetBy: midN)
-            let sub2Index = s.index(s.startIndex, offsetBy: midN+1)
+            let mIndex = s.index(s.startIndex, offsetBy: s.count / 2)
+            let sub2Index = s.index(s.startIndex, offsetBy: (s.count / 2)+1)
             if String(s[..<mIndex]) == String(s[sub2Index...].reversed()) {
                 return "True"
             }
@@ -35,23 +34,19 @@ class PalindromeTests: XCTestCase {
         expect(input: "1", result: "True")
     }
     
-    func test_PrintFalseWhenDigitsCountEqualsTwo() {
+    func test_PrintFalseWhenDigitsCountEqualsTwoNonPalindrome() {
         expect(input: "12", result: "False")
     }
     
+    
     func test_PrintTrueWhenDigitCountIsEvenPalindrome() {
-        ["1221","123321","12344321"].forEach {
+        ["44","1221","123321","12344321"].forEach {
             expect(input: $0, result: "False")
         }
     }
     
-    func test_PrintTrueWhenOddDigitCountNonPalindrome() {
+    func test_PrintFalseWhenOddDigitCountNonPalindrome() {
         ["122","12345","7654321"].forEach {
-            expect(input: $0, result: "False")
-        }
-    }
-    func test_PrintTrueWhenPalindrome() {
-        ["121", "12345","7654321"].forEach {
             expect(input: $0, result: "False")
         }
     }
