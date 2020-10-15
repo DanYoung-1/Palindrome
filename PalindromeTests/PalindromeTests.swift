@@ -45,10 +45,6 @@ class PalindromeTests: XCTestCase {
         }
     }
     
-    func test_PrintTrueWhenThreeDigitNonPalindrome() {
-        expect(input: "122", result: "False")
-    }
-    
     func test_PrintTrueWhenOddDigitCountNonPalindrome() {
         ["122","12345","7654321"].forEach {
             expect(input: $0, result: "False")
